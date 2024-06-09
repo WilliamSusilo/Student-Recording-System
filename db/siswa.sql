@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 06:41 AM
+-- Generation Time: Jun 09, 2024 at 10:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,9 +68,7 @@ INSERT INTO `tb_siswa` (`id_siswa`, `nama`, `kelas`, `id_jurusan`, `id_spp`) VAL
 (4, 'Leon', 'X', 4, 3),
 (5, 'Grace', 'XII', 1, 1),
 (6, 'Jane', 'XI', 2, 3),
-(7, 'Ryu', 'X', 3, 3),
-(8, 'Alexandra', 'X', 1, 3),
-(9, 'Max', 'X', 2, 1);
+(7, 'Ryu', 'X', 3, 3);
 
 -- --------------------------------------------------------
 

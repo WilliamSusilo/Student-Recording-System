@@ -29,6 +29,21 @@ include("koneksi.php");
             margin: 0;
         }
 
+        a.update {
+            color: blue; 
+            text-decoration: none; 
+        }
+
+        a.delete {
+            color: red; 
+            text-decoration: none; 
+        }
+
+        a:hover {
+            color: gray; 
+        }
+
+
         .container {
             background: #fff;
             padding: 2em;
@@ -37,7 +52,7 @@ include("koneksi.php");
             filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.2));
             width: 800px;
             text-align: center;
-            margin-top: 2em;
+            margin: 2em 0;
         }
 
         h1 {
@@ -154,13 +169,14 @@ include("koneksi.php");
                 <th>Jurusan</th>
                 <th>Tahun</th>
                 <th>Nominal</th>
+                <th colspan="2">Aksi</th>
             </tr>
 
             <!-- Kode PHP -->
             <?php
             if(isset($_GET['cari'])){
                 $cari = $_GET['cari'];
-                $query = mysqli_query($koneksi, "SELECT * FROM tb_siswa INNER JOIN tb_jurusan ON tb_siswa.id_jurusan = tb_jurusan.id_jurusan INNER JOIN tb_spp ON tb_siswa.id_spp = tb_spp.id_spp WHERE nama LIKE '%".$cari."%' OR kelas LIKE '%".$cari."%' OR nama_jurusan LIKE '%".$cari."%' OR tahun LIKE '%".$cari."%' OR nominal LIKE '%".$cari."%'");				
+                $query = mysqli_query($koneksi, "SELECT * FROM tb_siswa INNER JOIN tb_jurusan ON tb_siswa.id_jurusan = tb_jurusan.id_jurusan INNER JOIN tb_spp ON tb_siswa.id_spp = tb_spp.id_spp WHERE nama LIKE '%".$cari."%' OR kelas = '$cari' OR nama_jurusan LIKE '%".$cari."%' OR tahun LIKE '%".$cari."%' OR nominal LIKE '%".$cari."%'");				
             } else{
             $query = mysqli_query($koneksi, "SELECT * FROM tb_siswa INNER JOIN tb_jurusan ON tb_siswa.id_jurusan = tb_jurusan.id_jurusan INNER JOIN tb_spp ON tb_siswa.id_spp = tb_spp.id_spp");
             }
@@ -176,6 +192,8 @@ include("koneksi.php");
                 <td><?= $row['nama_jurusan'];?></td>
                 <td><?= $row['tahun'];?></td>
                 <td><?= $row['nominal'];?></td>
+                <td><a class="update" href="update.php?id_siswa=<?= $row['id_siswa'] ?>">Ubah</a></td>
+                <td><a class="delete" href="delete.php?id_siswa=<?= $row['id_siswa'] ?>" onclick="return confirm('Anda Yakin akan Menghapus Data Ini?')">Hapus</a></td>
             </tr>
 
             <?php endforeach; ?>
